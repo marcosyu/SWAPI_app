@@ -38,11 +38,16 @@ $(document).ready ->
           y = parseInt(rows[i + 1].getAttribute('data-id'))
 
           favorites = JSON.parse(localStorage.getItem('favorites'))
-          console.log favorites.includes(x.toString()) && !favorites.includes(y.toString())
+          
+          if favorites == null
+            if x > y
+              shouldSwitch = true
+              break
+          else
+            if favorites.includes(y.toString()) && !favorites.includes(x.toString())
+              shouldSwitch = true
+              break
 
-          if favorites.includes(y.toString()) && !favorites.includes(x.toString())
-            shouldSwitch = true
-            break
           i++
           
         if shouldSwitch
@@ -64,7 +69,7 @@ $(document).ready ->
     handle_fav = (e) ->                     
       e.stopPropagation();
 
-      existing_favorites = JSON.parse(localStorage.getItem('favorites'))
+      existing_favorites = JSON.parse(localStorage.getItem('favorites')) || []
       favorite = this.getAttribute('data-id')
 
       if existing_favorites.includes(favorite)
@@ -84,7 +89,8 @@ $(document).ready ->
 
     Array.from(fav_links).forEach((element) =>
       id = element.getAttribute('data-id')
-      if JSON.parse(localStorage.getItem('favorites')).includes(id)
+      favorites = JSON.parse(localStorage.getItem('favorites')) || []
+      if favorites.includes(id)
         element.children[0].className= "fa fa-star"
       element.addEventListener('click', handle_fav, element )
 

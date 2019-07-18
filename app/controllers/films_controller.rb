@@ -1,8 +1,8 @@
 class FilmsController < ApplicationController
 
   def index
-    data = SwapiService.new("films/").call
-    @films = data["results"]
+    data = SwapiService.new("films/").call_all
+    @films = data
   end
 
   def show

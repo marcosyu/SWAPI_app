@@ -8,5 +8,8 @@ class SwapiService
     response =  Faraday.get(Settings.swapi_root_url+ @url)
     return JSON.parse(response.body)
   end
+  def call_all
+    call["results"]
+  end
 
 end

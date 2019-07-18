@@ -1,23 +1,31 @@
-.page-header
-  %h1.title Films
+#films
+  .page-header
+    %h1.title Films
+  %form.form-inline
+    .form-group
+      %label.form-label Search:
+      %input#search.form-control
+  %br
 
-%table.table
-  %thead.thead-dark
-    %tr
-      %th Favorite
-      %th Episode ID
-      %th Title
-      %th Director
-      %th Producer
-      %th Release Date
-  %tbody
-    - @films.each do |film|
-      %tr.row_link{data:{ link: film_path(film["episode_id"])}}
-        - cache film do
-          %td.fav_link.text-center{ data:{ link: film_path(film["episode_id"]) }}
-            %span.fa.fa-star-o
-          %td= film["episode_id"]
-          %td= film["title"]
-          %td= film["director"]
-          %td= film["producer"]
-          %td= film["release_date"]
+  #alert_placeholder
+
+  %table#film_table.table
+    %thead.thead-dark
+      %tr
+        %th Favorite
+        %th Episode ID
+        %th Title
+        %th Director
+        %th Producer
+        %th Release Date
+    %tbody
+      - @films.each do |film|
+        %tr.row_link{data:{id: film["episode_id"], link: film_path(film["episode_id"])}}
+          - cache film do
+            %td.fav_link.text-center{ data:{ id: film["episode_id"] }}
+              %span.fa.fa-star-o
+            %td= film["episode_id"]
+            %td= film["title"]
+            %td= film["director"]
+            %td= film["producer"]
+            %td= film["release_date"]

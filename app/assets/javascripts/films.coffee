@@ -1,4 +1,4 @@
-$(document).ready ->
+ready= () ->
 
   if document.getElementById('films') != null
 
@@ -132,3 +132,5 @@ $(document).ready ->
     )
 
     $("[rel=tooltip]").tooltip({html:true});
+
+$(document).on('turbolinks:load', ready); 

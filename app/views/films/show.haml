@@ -1,0 +1,45 @@
+.page-header
+  %h1.title Film Details
+  %span.subtitle= link_to 'Back to list', films_path
+%table.table
+  %tr
+    %th Title
+    %td= @film["title"]
+  %tr
+    %th Director
+    %td= @film["director"]
+  %tr
+    %th Producer
+    %td= @film["producer"]
+  %tr
+    %th Release Date
+    %td= @film["release_date"]
+  %tr
+    %th Characters
+    %td
+      = render partial: 'list', locals: { data: @film["characters"] }
+  %tr
+    %th Planets
+    %td
+      = render partial: 'list', locals: { data: @film["planets"] }    
+  %tr
+    %th Starships
+    %td
+      = render partial: 'list', locals: { data: @film["starships"] }     
+  %tr
+    %th Vehicles
+    %td
+      = render partial: 'list', locals: { data: @film["vehicles"] }     
+  %tr
+    %th Species
+    %td
+      = render partial: 'list', locals: { data: @film["species"] }     
+  %tr
+    %th Created
+    %td= format_date_time(@film["created"])
+  %tr
+    %th Edited
+    %td= format_date_time(@film["edited"])
+  %tr
+    %th URL
+    %td= @film["url"] 

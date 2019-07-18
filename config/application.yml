@@ -1,0 +1,14 @@
+# config/application.yml
+defaults: &defaults
+  swapi_root_url: https://swapi.co/api/
+  
+
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

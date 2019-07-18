@@ -97,7 +97,6 @@ $(document).ready ->
       )
 
     handle_link = (e) -> 
-      return console.log "redirect"
       url = this.getAttribute("data-link")
       window.location = url  
 
